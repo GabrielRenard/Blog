@@ -21,7 +21,7 @@ const Author = ({ author }: Props) => {
         />
         <h1 className="text-3xl my-5">{author.name}</h1>
         <p className="max-w-4xl text-xl p-10">
-          {author.bio.map(item => item.children[0].text)}
+          {author.bio.map((item: any) => item.children[0].text)}
         </p>
       </div>
     </>
