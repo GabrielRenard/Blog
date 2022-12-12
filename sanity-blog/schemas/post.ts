@@ -8,8 +8,14 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Title',
+      description: 'Title of the post',
       type: 'string',
     }),
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    },
     defineField({
       name: 'slug',
       title: 'Slug',
