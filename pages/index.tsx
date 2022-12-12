@@ -10,7 +10,7 @@ interface Props {
   posts: [Post];
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const query = `*[_type == "post"] {
     _id,
     title,
