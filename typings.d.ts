@@ -25,7 +25,7 @@ export interface Post {
 export interface Author {
   _id: string;
   name: string;
-  bio: Array<object>;
+  bio: Array;
   slug: {
     current: string;
   };
