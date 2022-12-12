@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-sanity-blog/node_modules
+sanity-blog/*
 
 
 # testing
