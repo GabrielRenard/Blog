@@ -63,11 +63,10 @@ const Post = ({ post }: Props) => {
             <div>
               <p>
                 By{" "}
-                <Link
-                  href={`/Authors/${post.author.slug.current}`}
-                  className="text-blue-600 hover:text-blue-800"
-                >
-                  {post.author.name}
+                <Link href={`/authors/${post.author.slug.current}`}>
+                  <p className="text-blue-600 hover:text-blue-800 cursor-pointer">
+                    {post.author.name}
+                  </p>
                 </Link>
               </p>
               <p>Published at {new Date(post._createdAt).toLocaleString()}</p>
@@ -84,7 +83,6 @@ const Post = ({ post }: Props) => {
             projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
             content={post.body}
             className="text-xl md:text-2xl"
-            serializers={{}}
           />
         </div>
       </article>

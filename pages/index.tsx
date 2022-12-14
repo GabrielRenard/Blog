@@ -4,13 +4,12 @@ import Image from "next/image";
 import { sanityClient, urlFor } from "../sanity";
 import { Post } from "../typings";
 import Link from "next/link";
-import author from "../sanity-blog/schemas/author";
 
 interface Props {
   posts: [Post];
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const query = `*[_type == "post"] {
     _id,
     title,
@@ -53,10 +52,8 @@ const Home = ({ posts }: Props) => {
           </div>
 
           <div>
-            <Image
-              src="/../public/assets/images/logo-secondary.png"
-              width={150}
-              height={150}
+            <img
+              src="/assets/images/logo-secondary.png"
               alt="logo"
               className="hidden md:block md:h-25 md:w-25 lg:h-40 lg:w-40 "
             />
@@ -67,12 +64,8 @@ const Home = ({ posts }: Props) => {
       {/* Posts */}
       <div className="grid grid-cols-1 p-3 gap-3 sm:grid-cols-2 md:gap-5 md:p-4 lg:grid-cols-3">
         {posts.map(post => (
-          <Link
-            key={post._id}
-            href={`/post/${post.slug.current}`}
-            className="group"
-          >
-            <div className="overflow-hidden rounded-t-md">
+          <Link key={post._id} href={`/post/${post.slug.current}`}>
+            <div className="overflow-hidden rounded-t-md group cursor-pointer">
               {post.mainImage && (
                 <img
                   src={urlFor(post.mainImage).url()!}
@@ -80,17 +73,18 @@ const Home = ({ posts }: Props) => {
                   className="w-full aspect-[5/3] sm:aspect-[6/3] bg-blue-100 object-cover rounded-t-md group-hover:scale-105 group-hover:opacity-95 transition-all duration-300 ease-in-out"
                 />
               )}
-            </div>
-            <div className="flex justify-between p-5 bg-emerald-200 rounded-b-md">
-              <div className="">
-                <p className="font-bold text-lg md:text-xl">{post.title}</p>
-                <p className="lg:text-lg">{`By ${post.author.name}`}</p>
+
+              <div className="flex justify-between p-5 bg-emerald-200 rounded-b-md">
+                <div className="">
+                  <p className="font-bold text-lg md:text-xl">{post.title}</p>
+                  <p className="lg:text-lg">{`By ${post.author.name}`}</p>
+                </div>
+                <img
+                  src={urlFor(post.author.image).url()!}
+                  alt="Author image"
+                  className="rounded-full w-12 h-12"
+                />
               </div>
-              <img
-                src={urlFor(post.author.image).url()!}
-                alt="Author image"
-                className="rounded-full w-12 h-12"
-              />
             </div>
           </Link>
         ))}

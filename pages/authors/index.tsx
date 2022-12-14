@@ -16,15 +16,13 @@ const Authors = ({ authors }: Props) => {
         {authors.map(author => (
           <Link
             key={author._id}
-            href={`Authors/${author.slug.current}`}
+            href={`authors/${author.slug.current}`}
             className="group"
           >
             <div className="flex flex-col items-center">
               <img
                 src={urlFor(author.image.asset).url()}
                 alt="Author profile picture"
-                width={""}
-                height={""}
                 className="object-cover lg:max-w-[250px] w-full aspect-square rounded-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
               />
               <h1 className="flex justify-center text-3xl mt-8 group-hover:text-emerald-900">

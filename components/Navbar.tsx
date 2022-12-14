@@ -1,19 +1,15 @@
-import React from "react";
 import Link from "next/link";
-import Logo from "!@svgr/webpack!../public/assets/images/logo-primary.svg";
 
 const Navbar = () => {
   return (
     <nav className="z-10 fixed top-0 w-full bg-zinc-50 shadow-md shadow-zinc-300 flex justify-between px-5 py-1 text-zinc-900">
       <div className="flex items-center space-x-10">
         <div className="">
-          <Link href="/" className="group">
-            <div className="flex items-center">
-              <Logo
-                src={Logo}
+          <Link href="/">
+            <div className="flex items-center cursor-pointer group">
+              <img
+                src="/assets/images/logo-primary.svg"
                 alt="Logo"
-                width={""}
-                height={""}
                 className="w-[60px] lg:w-[70px] group-hover:scale-105 transition-transform duration-300 ease-in-out"
               />
               <h1 className="orbitron hidden text-5xl lg:block">
