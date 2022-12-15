@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { sanityClient, urlFor } from "../sanity";
 import { Post } from "../typings";
 import Link from "next/link";
@@ -9,7 +8,7 @@ interface Props {
   posts: [Post];
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const query = `*[_type == "post"] {
     _id,
     title,
